@@ -113,12 +113,14 @@ def string_in_list (module_path, modified_files):
 ###############################################################################
 #
 # Check if file has correct properties, meaning that the file extension has to
-# be .v/.sv and it should not be some certain files.
+# be .v  and it should not be some certain files (.sv, tb)
 # Returns true or false.
 ###############################################################################
 def check_filename (filename):
 
-    if (filename.endswith('.v') == False and filename.endswith('.sv') == False):
+    if (filename.endswith('.v') == False):
+        return False
+    if (filename.endswith('.sv') == True):
         return False
     if (filename.find("tb") != -1):
         return False
